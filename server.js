@@ -28,22 +28,6 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(err);
     });
 
-//defining a schema
-
-const newsSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    }
-});
-
-//defining a model
-const News = new mongoose.model('News', newsSchema);
-
 app.get('/articles/new', (req, res) => {
     res.render('new');
 });
