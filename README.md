@@ -1,3 +1,3 @@
 # MissAnime
 
-1. Add all files from main replit
+[X] 1. Add all files from main replit
