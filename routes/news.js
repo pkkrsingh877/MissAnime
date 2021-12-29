@@ -20,13 +20,13 @@ router.post('/new', (req, res) => {
             }
         });
     } else {
-        res.render('message');
+        res.render('news/message');
     }
-    res.render('message');
+    res.render('news/message');
 });
 
 router.get('/new', (req, res) => {
-    res.render('new');
+    res.render('news/new');
 });
 
 router.get('/:id', async (req, res) => {
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
     console.log(req.params) 
     const news = await News.findById(id);
     if(news){
-      res.render('show', { news });
+      res.render('news/show', { news });
     }
 });
 
@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('index', { data });
+            res.render('news/index', { data });
         }
     });
 });
