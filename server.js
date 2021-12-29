@@ -27,53 +27,9 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(err);
     });
 
-app.get('/articles/new', (req, res) => {
-    res.render('new');
-});
-
-app.post('/articles/new', (req, res) => {
-    console.log(req.body);
-    const { title, description, password } = req.body;
-    console.log(password == process.env.SPECIAL_PASSWORD)
-    if (password == process.env.SPECIAL_PASSWORD) {
-        let news = new News({
-            title: title,
-            description: description
-        });
-        news.save((err, data) => {
-            if (err) {
-                console.log(err);
-            } else {
-                // console.log(data);
-                res.redirect('/');
-            }
-        });
-    } else {
-        res.render('message');
-    }
-    res.render('message');
-});
-
-app.get('/articles/:id', async (req, res) => {
-    const { id } = req.params;  
-    console.log(req.params) 
-    const news = await News.findById(id);
-    data = news;
-    if(news){
-      res.render('show', {data});
-    }
-});
-
-app.get('/articles', (req, res) => {
-    News.find({}, (err, data) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data);
-            res.render('index', { data });
-        }
-    });
-});
+//routes setup
+const newsRoutes = require('./routes/news');
+app.use('/articles', newsRoutes);
 
 app.get('/', (req, res) => {
     res.redirect('/articles');
