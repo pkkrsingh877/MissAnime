@@ -2,27 +2,22 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
-router.post('/new', (req, res) => {
-    console.log(req.body);
-    const { title, description, password } = req.body;
-    console.log(password == process.env.SPECIAL_PASSWORD)
-    if (password == process.env.SPECIAL_PASSWORD) {
-        let news = new News({
-            title: title,
-            description: description
-        });
-        news.save((err, data) => {
-            if (err) {
-                console.log(err);
-            } else {
-                // console.log(data);
-                res.redirect('/');
-            }
-        });
-    } else {
-        res.render('news/message');
+router.post('/new', async (req, res) => {
+    try {
+        const { title, description, password } = req.body;
+        if (password == process.env.SPECIAL_PASSWORD) {
+            let news = await News.create({
+                title: title,
+                description: description
+            });
+            res.redirect('/articles');
+        } else {
+            res.render('news/message');
+        }
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
     }
-    res.render('news/message');
 });
 
 router.get('/new', (req, res) => {
@@ -41,11 +36,13 @@ router.delete('/:id', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    const { id } = req.params;  
-    console.log(req.params) 
-    const news = await News.findById(id);
-    if(news){
-      res.render('news/show', { news });
+    try {
+        const { id } = req.params;  
+        const news = await News.findById(id);
+        res.render('news/show', { news });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/articles');
     }
 });
 
