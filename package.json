@@ -1,0 +1,31 @@
+{
+  "name": "missanime",
+  "version": "1.0.0",
+  "description": "Anime app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkkrsingh877/MissAnime.git"
+  },
+  "keywords": [
+    "anime"
+  ],
+  "author": "Prabhat Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkkrsingh877/MissAnime/issues"
+  },
+  "homepage": "https://github.com/pkkrsingh877/MissAnime#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.4",
+    "morgan": "^1.10.0"
+  }
+}
