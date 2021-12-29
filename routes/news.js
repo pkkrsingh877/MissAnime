@@ -33,6 +33,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
         await News.findByIdAndDelete(id);
+        res.redirect('/articles');
     } catch (err) {
         console.log(err);
         res.redirect('/articles');
