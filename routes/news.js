@@ -49,14 +49,14 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/', (req, res) => {
-    News.find({}, (err, data) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('news/index', { data });
-        }
-    });
+router.get('/', async (req, res) => {
+    try {
+        const news = await News.find({});
+        res.render('news/index', { news });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/articles');
+    }
 });
 
 module.exports = router;
