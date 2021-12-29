@@ -7,8 +7,10 @@ require('dotenv').config();
 const ejsMate = require('ejs-mate');
 const morgan = require('morgan');
 const News = require('./models/news');
+const methodOverride = require('method-override');
 
-//body parser middleware
+//middlewares
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
