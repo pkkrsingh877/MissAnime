@@ -6,17 +6,17 @@ const dirname = require('path');
 const path = require('path');
 const port = process.env.PORT || 8000;
 require('dotenv').config();
-
-//serving static files
-app.use(express.static(__dirname + '/public'));
-app.use('img', express.static(__dirname + '/img'));
+const ejsMate = require('ejs-mate');
+const morgan = require('morgan');
 
 //body parser middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('tiny'));
 
 //setting up ejs
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, 'views'));
 
 //connecting to our database
 mongoose.connect(process.env.MONGO_URI)
