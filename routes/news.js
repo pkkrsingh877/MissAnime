@@ -29,6 +29,16 @@ router.get('/new', (req, res) => {
     res.render('news/new');
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await News.findByIdAndDelete(id);
+    } catch (err) {
+        console.log(err);
+        res.redirect('/articles');
+    }
+})
+
 router.get('/:id', async (req, res) => {
     const { id } = req.params;  
     console.log(req.params) 

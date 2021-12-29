@@ -11,9 +11,10 @@
             <%= data[i].description %>
         </div>
         <div class='buttons'>
-            <a class='btn btn-danger button' href="#">Delete</a>
-            <form action=""></form>
-            <a class='btn btn-info button' href="#">Edit</a>
+            <form action="/articles/<%= data[i]._id %>?_method=DELETE" method="POST">
+                <button class='btn btn-danger button'>Delete</button>
+            </form>
+            <a class='btn btn-info button' href="/articles/edit/<%= data[i]._id %>">Edit</a>
             <a class='btn btn-primary button' href="/articles/<%= data[i]._id %>">Read More</a>
         </div>
     </section>
