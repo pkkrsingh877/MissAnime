@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
-const mongodb = require("mongodb");
-const dirname = require('path');
 const path = require('path');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 require('dotenv').config();
 const ejsMate = require('ejs-mate');
 const morgan = require('morgan');
+const News = require('./models/news');
 
 //body parser middleware
 app.use(express.urlencoded({ extended: true }));
