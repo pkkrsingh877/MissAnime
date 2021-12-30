@@ -32,6 +32,8 @@ mongoose.connect(process.env.MONGO_URI)
 //routes setup
 const newsRoutes = require('./routes/news');
 app.use('/articles', newsRoutes);
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
     res.redirect('/articles');
