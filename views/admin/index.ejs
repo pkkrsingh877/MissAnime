@@ -2,6 +2,10 @@
 
 <h1 class="title">Admin Panel</h1>
 
-<a href="/admin" class="btn btn-outline-success">
-    Refresh
-</a>
+<ul>
+    <% for( let index = 0; index < news.length; index++ ) { %>
+        <li>
+        <a href="/articles/<%= news[index]._id %>"><%= news[index].title %> </a>
+        </li>
+    <% } %>
+</ul>
