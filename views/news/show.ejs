@@ -10,10 +10,10 @@
             <%= news.description %>
         </div>
         <div class='buttons'>
-            <form action="/articles/<%= news[i]._id %>?_method=DELETE" method="POST">
+            <form action="/articles/<%= news._id %>?_method=DELETE" method="POST">
                 <button class='btn btn-danger button'>Delete</button>
             </form>
-            <a class='btn btn-info button' href="/articles/edit/<%= news[i]._id %>">Edit</a>
+            <a class='btn btn-info button' href="/articles/edit/<%= news._id %>">Edit</a>
             <a class='btn btn-primary button' href="/articles">Back to Homepage</a>
         </div>
     </section>
