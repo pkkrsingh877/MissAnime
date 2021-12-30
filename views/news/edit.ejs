@@ -1,18 +1,18 @@
 <%- layout('./layouts/boilerplate') %>
 <div class="container">
-    <form method="POST" action="/articles/<%= news._id %>">
+    <form method="POST" action="/articles/edit/<%= news._id %>">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" value="<%= news.title %>" aria-describedby="title">
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<%= news.title %>">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea cols=30 rows=5 class="form-control" name="description" id="description" value="<%= news.title %>"></textarea>
+            <textarea cols=30 rows=5 class="form-control" name="description" id="description"><%= news.description %></textarea>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Admin Password</label>
             <input type="password" class="form-control" name="password" id="password"
-                aria-describedby="password">
+            aria-describedby="password">
         </div>
         <button type="submit" id="btn" class="btn btn-primary">Submit</button>
     </form>
