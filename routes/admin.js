@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
+router.get('/articles/new', (req, res) => {
+    res.render('admin/new');
+});
+
 router.delete('/articles/delete/:id', async (req, res) => {
     try {
         const { id } = req.body;
