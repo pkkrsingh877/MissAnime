@@ -62,10 +62,10 @@ router.delete('/articles/delete/:id', async (req, res) => {
     try {
         const { id } = req.body;
         await News.findByIdAndDelete(id);
-        res.redirect('/admin');
+        res.redirect('/admin/articles');
     } catch (err) {
         console.log(err);
-        res.redirect('/admin');
+        res.redirect('/admin/articles');
     }
 });
 
