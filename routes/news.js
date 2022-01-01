@@ -36,24 +36,6 @@ router.get('/edit/:id', async (req, res) => {
     }
 });
 
-router.post('/new', async (req, res) => {
-    try {
-        const { title, description, password } = req.body;
-        if (password == process.env.SPECIAL_PASSWORD) {
-            let news = await News.create({
-                title: title,
-                description: description
-            });
-            res.redirect('/articles');
-        } else {
-            res.render('news/message');
-        }
-    } catch (err) {
-        console.log(err);
-        res.redirect('/');
-    }
-});
-
 router.get('/new', (req, res) => {
     res.render('news/new');
 });

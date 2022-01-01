@@ -2,6 +2,24 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
+router.post('/articles', async (req, res) => {
+    try {
+        const { title, description, password } = req.body;
+        if (password == process.env.SPECIAL_PASSWORD) {
+            let news = await News.create({
+                title: title,
+                description: description
+            });
+            res.redirect('/admin/articles');
+        } else {
+            res.render('news/message');
+        }
+    } catch (err) {
+        console.log(err);
+        res.redirect('/admin/articles');
+    }
+});
+
 router.get('/articles/new', (req, res) => {
     res.render('admin/new');
 });
