@@ -24,18 +24,6 @@ router.post('/edit/:id', async (req, res) => {
     }
 });
 
-router.get('/edit/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const news = await News.findById(id);
-        console.log(news);
-        res.render('news/edit', { news });
-    } catch (err) {
-        console.log(err);
-        res.redirect(`/articles/${id}`);
-    }
-});
-
 router.get('/new', (req, res) => {
     res.render('news/new');
 });

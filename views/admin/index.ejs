@@ -7,8 +7,8 @@
         <li class="d-flex flex-row justify-content-between flex-wrap">
         <a href="/articles/<%= news[index]._id %>" style="text-decoration: none;"><%= news[index].title %> </a>
         <div>
-            <a href="/articles/edit/<%= news[index]._id %>" class="btn btn-outline-primary">Edit</a>
-            <form action="/articles/delete/<%= news[index]._id %>?_method=DELETE" class="d-inline" method="POST">
+            <a href="/admin/articles/edit/<%= news[index]._id %>" class="btn btn-outline-primary">Edit</a>
+            <form action="/admin/articles/delete/<%= news[index]._id %>?_method=DELETE" class="d-inline" method="POST">
                 <button class="btn btn-outline-danger">Delete</button>
             </form>
         </div>

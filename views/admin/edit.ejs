@@ -1,7 +1,7 @@
 <%- layout('./layouts/boilerplate') %>
 <div class="container">
     <h1 class="title">Edit Article</h1>
-    <form method="POST" action="/articles/edit/<%= news._id %>">
+    <form method="POST" action="/admin/articles/edit/<%= news._id %>">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" name="title" id="title" aria-describedby="title" value="<%= news.title %>">
