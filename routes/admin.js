@@ -13,7 +13,6 @@ router.post('/articles/edit/:id', async (req, res) => {
                 new: true,
                 upsert: true
             });
-            console.log(news);
             res.render('admin/edit', { news });
         }else{
             res.redirect(`/admin/articles`);
@@ -28,7 +27,6 @@ router.get('/articles/edit/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const news = await News.findById(id);
-        console.log(news);
         res.render('admin/edit', { news });
     } catch (err) {
         console.log(err);
@@ -60,7 +58,7 @@ router.get('/articles/new', (req, res) => {
 
 router.delete('/articles/delete/:id', async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         await News.findByIdAndDelete(id);
         res.redirect('/admin/articles');
     } catch (err) {
