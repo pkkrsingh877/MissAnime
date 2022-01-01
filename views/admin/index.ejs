@@ -1,7 +1,10 @@
 <%- layout('./layouts/boilerplate') %>
 
 <h1 class="title">Admin Panel</h1>
-
+<hr>
+<a href="/admin/articles/new" class="text-decoration-none">Create New Article</a>
+<hr>
+<h2>List of articles</h2>
 <ul>
     <% for( let index = 0; index < news.length; index++ ) { %>
         <li class="d-flex flex-row justify-content-between flex-wrap">

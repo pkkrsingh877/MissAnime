@@ -2,12 +2,34 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
+router.post('/articles/edit/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, description, password } = req.body;
+        if(password === process.env.SPECIAL_PASSWORD){
+            const news = await News.findByIdAndUpdate(id, {
+                title, description
+            }, { 
+                new: true,
+                upsert: true
+            });
+            console.log(news);
+            res.render('admin/edit', { news });
+        }else{
+            res.redirect(`/admin/articles`);
+        }
+    } catch (err) {
+        console.log(err);
+        res.redirect(`/admin/articles`);
+    }
+});
+
 router.get('/articles/edit/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const news = await News.findById(id);
         console.log(news);
-        res.render('news/edit', { news });
+        res.render('admin/edit', { news });
     } catch (err) {
         console.log(err);
         res.redirect(`/articles/${id}`);
