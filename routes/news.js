@@ -2,21 +2,6 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
-router.get('/new', (req, res) => {
-    res.render('news/new');
-});
-
-router.delete('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        await News.findByIdAndDelete(id);
-        res.redirect('/articles');
-    } catch (err) {
-        console.log(err);
-        res.redirect('/articles');
-    }
-})
-
 router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;  
