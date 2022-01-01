@@ -13,7 +13,7 @@ router.delete('/articles/delete/:id', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/articles', async (req, res) => {
     try {
         const news = await News.find({});
         res.render('admin/index', { news });
@@ -21,6 +21,10 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.redirect('/admin');
     }
+});
+
+router.get('/', (req, res) => {
+    res.redirect('/admin/articles');
 });
 
 module.exports = router;
