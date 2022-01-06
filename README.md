@@ -10,3 +10,4 @@ Goals
 
 1. [] Admin can only add posts.
 2. [] Use slugs in place of ids
+3. [] Add meta keywords and descriptions to pages dynamically
