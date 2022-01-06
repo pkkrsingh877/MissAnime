@@ -9,3 +9,4 @@ https://missanime.prabhatkumar123.repl.co/
 Goals
 
 1. [] Admin can only add posts.
+2. [] Use slugs in place of ids
