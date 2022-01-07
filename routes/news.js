@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
 
-router.get('/:id', async (req, res) => {
+router.get('/:slug', async (req, res) => {
     try {
-        const { id } = req.params;  
-        const news = await News.findById(id);
+        const { slug } = req.params;  
+        const news = await News.findOne({ slug: slug });
+        console.log(news);
         res.render('news/show', { news });
     } catch (err) {
         console.log(err);
@@ -16,6 +17,7 @@ router.get('/:id', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const news = await News.find({});
+        console.log(news);
         res.render('news/index', { news });
     } catch (err) {
         console.log(err);

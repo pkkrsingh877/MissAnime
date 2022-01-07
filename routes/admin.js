@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const News = require('../models/news');
+const slugify = require('slugify');
 
 router.post('/articles/edit/:id', async (req, res) => {
     try {
@@ -8,7 +9,7 @@ router.post('/articles/edit/:id', async (req, res) => {
         const { title, description, password } = req.body;
         if(password === process.env.SPECIAL_PASSWORD){
             const news = await News.findByIdAndUpdate(id, {
-                title, description
+                title, description, slug: slugify(title)
             }, { 
                 new: true,
                 upsert: true
@@ -40,7 +41,7 @@ router.post('/articles', async (req, res) => {
         if (password == process.env.SPECIAL_PASSWORD) {
             let news = await News.create({
                 title: title,
-                description: description
+                description: description, slug: slugify(title)
             });
             res.redirect('/admin/articles');
         } else {
