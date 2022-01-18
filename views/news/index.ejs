@@ -3,7 +3,7 @@
 <% for(let i=(news.length - 1); i>= 0; i--){ %>
     <section class="card shadow p-3 mb-3 bg-body rounded">
         <h2 class="title">
-            <a href="/articles/<%= news[i]._id %>" class="text-decoration-none"><%= news[i].title %></a>
+            <a href="/articles/<%= news[i].slug %>" class="text-decoration-none"><%= news[i].title %></a>
         </h2>
         <div class="description">
             <%- news[i].description %>
