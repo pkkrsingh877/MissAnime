@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 //middlewares
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 app.use(morgan('tiny'));
 
 //setting up ejs
