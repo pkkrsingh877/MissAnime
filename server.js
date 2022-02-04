@@ -37,7 +37,7 @@ const adminRoutes = require('./routes/admin');
 app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
-    res.redirect('/articles');
+    res.render('homepage/index');
 });
 
 app.listen(port, () => {
