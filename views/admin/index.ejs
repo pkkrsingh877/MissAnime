@@ -8,7 +8,7 @@
 <ul>
     <% for( let index = 0; index < news.length; index++ ) { %>
         <li class="d-flex flex-row justify-content-between flex-wrap">
-        <a href="/articles/<%= news[index]._id %>" style="text-decoration: none;"><%= news[index].title %> </a>
+        <a href="/articles/<%= news[index].slug %>" style="text-decoration: none;"><%= news[index].title %> </a>
         <div>
             <a href="/admin/articles/edit/<%= news[index]._id %>" class="btn btn-outline-primary">Edit</a>
             <form action="/admin/articles/delete/<%= news[index]._id %>?_method=DELETE" class="d-inline" method="POST">
